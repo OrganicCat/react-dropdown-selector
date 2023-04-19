@@ -6,7 +6,7 @@ interface DropdownOption {
     label: string
 };
 
-const dungeonsAndDragonsClasses: DropdownOption[] = [
+const DungeonsAndDragonsClasses: DropdownOption[] = [
     { value: '', label: 'Select a class' },
     { value: 'barbarian', label: 'Barbarian' },
     { value: 'bard', label: 'Bard' },
@@ -19,24 +19,24 @@ const dungeonsAndDragonsClasses: DropdownOption[] = [
     { value: 'rogue', label: 'Rogue' },
     { value: 'sorcerer', label: 'Sorcerer' },
     { value: 'warlock', label: 'Warlock' },
-    { value: 'wizard', label: 'Wizard' }
+    { value: 'wizard', label: 'Wizard' },
 ]
 
 export default function ReactDropDown() {
-    const [dropdownOptions, setDropdownOptions] = useState(dungeonsAndDragonsClasses);
-    const [dropdownStatus, setDropdownStatus] = useState("closed");
+    const [dropdownOptions, setDropdownOptions] = useState(DungeonsAndDragonsClasses);
+    const [dropdownStatus, setDropdownStatus] = useState<"closed" | "open">("closed");
     const [selectedOption, setSelectedOption] = useState<DropdownOption>(dropdownOptions[0]);
 
-    const handleClickOutside = (event: any) => {
-        if (event.target.id != "slick-react-dropdown") {
+    const handleClickOutside = (event: MouseEvent) => {
+        if (!(event.target instanceof Element) || !event.target.closest("#slick-react-dropdown")) {
             setDropdownStatus("closed");
         }
     };
 
     useEffect(() => {
-        document.addEventListener("click", handleClickOutside, false);
+        document.addEventListener("click", handleClickOutside);
         return () => {
-            document.removeEventListener("click", handleClickOutside, false);
+            document.removeEventListener("click", handleClickOutside);
         };
     }, []);
 
@@ -54,17 +54,19 @@ export default function ReactDropDown() {
     return (
         <>
             <div>Selected Option = {selectedOption.label} : {selectedOption.value}</div>
-            <div className={styles.dropdown}>
-                {dropdownStatus == "closed" && <div className={styles.dropdownItem} id="slick-react-dropdown" onClick={dropdownToggle}>{selectedOption.label}</div>}
-                {dropdownStatus == "open" && dropdownOptions.map((option) => {
-                    return (
-                        <div key={option.value}
-                            className={styles.dropdownItem}
-                            onClick={() => itemClick(option.value)}>
-                            {option.label}
-                        </div>
-                    )
-                })}
+            <div style={{ height: "38px" }}>
+                <div className={styles.dropdown}>
+                    {dropdownStatus == "closed" && <div className={styles.dropdownItem} id="slick-react-dropdown" onClick={dropdownToggle}>{selectedOption.label}</div>}
+                    {dropdownStatus == "open" && dropdownOptions.map((option) => {
+                        return (
+                            <div key={option.value}
+                                className={styles.dropdownItem}
+                                onClick={() => itemClick(option.value)}>
+                                {option.label}
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
         </>
     )

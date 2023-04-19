@@ -2,6 +2,8 @@
     background-color: #677eaa;
     color: #fff;
     user-select: none;
+    width: fit-content;
+    position: absolute;
 }
 
 .dropdownItem {
