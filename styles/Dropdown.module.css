@@ -1,10 +1,16 @@
 .dropdown {
     background-color: #677eaa;
     color: #fff;
-    padding: 5px;
+    user-select: none;
 }
 
 .dropdownItem {
     background-color: #262d10;
     color: #fff;
+    padding: 10px;
+}
+
+.dropdownItem:hover {
+    background-color: #535f2e;
+    cursor: pointer;
 }
