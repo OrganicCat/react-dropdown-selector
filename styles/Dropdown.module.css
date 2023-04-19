@@ -1,9 +1,22 @@
+.parentContainer {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.dropdownContainer {
+    width: 150px;
+    height: 4rem;
+    position: relative;
+}
+
 .dropdown {
     background-color: #677eaa;
     color: #fff;
     user-select: none;
     width: fit-content;
     position: absolute;
+    z-index: 999;
 }
 
 .dropdownItem {

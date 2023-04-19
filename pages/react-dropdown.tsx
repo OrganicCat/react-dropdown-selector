@@ -54,20 +54,22 @@ export default function ReactDropDown() {
     return (
         <>
             <div>Selected Option = {selectedOption.label} : {selectedOption.value}</div>
-            <div style={{ height: "38px" }}>
-                <div className={styles.dropdown}>
-                    {dropdownStatus == "closed" && <div className={styles.dropdownItem} id="slick-react-dropdown" onClick={dropdownToggle}>{selectedOption.label}</div>}
-                    {dropdownStatus == "open" && dropdownOptions.map((option) => {
-                        return (
-                            <div key={option.value}
-                                className={styles.dropdownItem}
-                                onClick={() => itemClick(option.value)}>
-                                {option.label}
-                            </div>
-                        )
-                    })}
+            <div className={styles.parentContainer}>
+                <div className={styles.dropdownContainer}>
+                    <div className={styles.dropdown}>
+                        {dropdownStatus == "closed" && <div className={styles.dropdownItem} id="slick-react-dropdown" onClick={dropdownToggle}>{selectedOption.label}</div>}
+                        {dropdownStatus == "open" && dropdownOptions.map((option) => {
+                            return (
+                                <div key={option.value}
+                                    className={styles.dropdownItem}
+                                    onClick={() => itemClick(option.value)}>
+                                    {option.label}
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
-            </div>
+            </div >
         </>
     )
 }
