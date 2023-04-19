@@ -1,0 +1,10 @@
+.dropdown {
+    background-color: #677eaa;
+    color: #fff;
+    padding: 5px;
+}
+
+.dropdownItem {
+    background-color: #262d10;
+    color: #fff;
+}
