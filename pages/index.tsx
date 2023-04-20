@@ -5,6 +5,27 @@ import ReactDropDown from './react-dropdown'
 
 const inter = Inter({ subsets: ['latin'] })
 
+interface DropdownOption {
+    value: string,
+    label: string
+};
+
+const DungeonsAndDragonsClasses: DropdownOption[] = [
+    { value: '', label: 'Select a class' },
+    { value: 'barbarian', label: 'Barbarian' },
+    { value: 'bard', label: 'Bard' },
+    { value: 'cleric', label: 'Cleric' },
+    { value: 'druid', label: 'Druid' },
+    { value: 'fighter', label: 'Fighter' },
+    { value: 'monk', label: 'Monk' },
+    { value: 'paladin', label: 'Paladin' },
+    { value: 'ranger', label: 'Ranger' },
+    { value: 'rogue', label: 'Rogue' },
+    { value: 'sorcerer', label: 'Sorcerer' },
+    { value: 'warlock', label: 'Warlock' },
+    { value: 'wizard', label: 'Wizard' },
+]
+
 export default function Home() {
     return (
         <>
@@ -15,7 +36,7 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main>
-                <ReactDropDown />
+                <ReactDropDown options={DungeonsAndDragonsClasses} />
             </main>
         </>
     )
