@@ -7,7 +7,6 @@ interface DropdownOption {
 };
 
 export default function ReactDropDown({ options }: { options: DropdownOption[] }) {
-    console.log("options", options)
     const [dropdownOptions, setDropdownOptions] = useState(options);
     const [dropdownStatus, setDropdownStatus] = useState<"closed" | "open">("closed");
     const [selectedOption, setSelectedOption] = useState<DropdownOption>(dropdownOptions[0]);
